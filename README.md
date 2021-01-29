@@ -1,5 +1,5 @@
 
-# MTG-Card-Scanner
+# MTG Card Scanner
 This is a project that I am currently working on that can be used to identify Magic: The Gathering cards using a camera. The indented use of this program is to make exporting large lists of cards quicker and easier by not requiring you to manually type in the name of every card.
 
 ## Card Scraper
