@@ -13,6 +13,9 @@ data_dir = os.path.join(root_dir,'data')
 img_hashes_file = os.path.join(data_dir,"img_hashes.json")
 
 def find_match(img_hash):
+    '''
+    Given an image hash, find the closest hash among stored hashes
+    '''
     f = open(img_hashes_file, 'r')
     hash_data = json.load(f)
 
@@ -34,6 +37,9 @@ def find_match(img_hash):
     return closest_match
 
 class TkClass:
+    '''
+    This class is used for handling Tkinter values, like the main window, labels, and frames
+    '''
 
     def __init__(self):
         self.window = tk.Tk()
@@ -66,14 +72,14 @@ class TkClass:
         self.matched_card = ""
         self.match_threshold = 5
 
-        self.display_cam()
+        self.main_event_loop()
 
     def put_img_in_label(self,label,img):
         img_tk = ImageTk.PhotoImage(img)
         label.img_tk = img_tk
         label.configure(image = img_tk)
 
-    def display_cam(self):
+    def main_event_loop(self):
         ret,cam_frame = self.cap.read()
 
         img = im.cv_to_pil(cam_frame)
@@ -118,7 +124,7 @@ class TkClass:
         
         self.scan_card_button.grid(row=1,column=0)
 
-        self.tk_frame.after(10, self.display_cam)
+        self.tk_frame.after(10, self.main_event_loop)
 
     def scan_card(self):
         self.result.delete("1.14",tk.END)

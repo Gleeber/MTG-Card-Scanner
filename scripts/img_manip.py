@@ -5,14 +5,23 @@ import imutils
 import numpy as np
 
 def cv_to_pil(img):
+    '''
+    Convert opencv image to Pillow image
+    '''
     img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
     img = Image.fromarray(img)
     return img
 
 def get_hash(img):
+    '''
+    Perform hash algorithm on an Pillow image
+    '''
     return int(str(imagehash.dhash(img)),16)
 
 def cv_get_hash(img):
+    '''
+    Perform hash algorithm on an opencv image
+    '''
     img = cv_to_pil(img)
     return get_hash(img)
 
@@ -47,6 +56,9 @@ def display(img):
     img.show()
 
 def find_card_border(img):
+    '''
+    Locate card in one frame of camera output
+    '''
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     mat_sz = 3
